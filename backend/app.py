@@ -49,7 +49,10 @@ def initialize_game():
         response = create_random_character()
         random_character = response.get_json().get('random_character')
 
-initialize_game()
+hora_atual = datetime.now().strftime("%H:%M")
+
+if hora_atual == "00:00":
+    initialize_game()
 
 @app.route('/characters/<name>', methods=['GET'])
 def get_character(name):

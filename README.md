@@ -19,7 +19,3 @@ pip install flask_cors
 ```
 pip install requests
 ```
-
-```
-pip install schedule
-```
