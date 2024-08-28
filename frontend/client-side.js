@@ -57,10 +57,10 @@ loadDivContents();
 
 function setCookie(name, value, days) {
     if (!getCookie(name)) { // Verifica se o cookie já existe
-    const date = new Date(); 
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    const expires = "expires=" + date.toUTCString();
-    document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
+        const date = new Date(); 
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
     } else {
         deleteCookiesAfterTime();
     }
