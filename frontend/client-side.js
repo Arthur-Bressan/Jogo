@@ -41,8 +41,59 @@ function closePopupTutorial() {
     document.getElementById("tutorial").style.display = "none";
 }
 
+
+loadDivContents();
+
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
+    console.log(`Cookie set: ${name}=${value}`);
+}
+
+function saveDivContents() {
+    const divs = document.querySelectorAll('.tentativa');
+    divs.forEach((div, index) => {
+        const divContent = div.outerHTML; // Salva o conteúdo completo da div
+        setCookie(`divContent${index}`, divContent, 1); // Salva o conteúdo com um nome de cookie único
+    });
+    setCookie('divCount', divs.length, 1); // Salva o número de divs
+    console.log(`Total divs saved: ${divs.length}`);
+}
+
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+    }
+    return null;
+}
+
+function loadDivContents() {
+    const container = document.getElementById('tries'); // Container onde as divs serão inseridas
+    const divCount = getCookie('divCount'); // Obtém o número de divs salvas
+    console.log(`Total divs to load: ${divCount}`);
+
+    for (let i = 0; i < divCount; i++) {
+        const divContent = getCookie(`divContent${i}`);
+        if (!divContent) continue; // Pula se não houver conteúdo
+
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = divContent;
+        const content = tempDiv.firstElementChild;
+        container.appendChild(content); // Insere o conteúdo no container
+        console.log(`Div loaded: ${divContent}`);
+    }
+}
+
+
+
 function submitGuess(guess) {
-    fetch('http://127.0.0.1:5000/characters/verifyGuess', {
+    fetch('http://localhost:5000/characters/verifyGuess', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -52,7 +103,7 @@ function submitGuess(guess) {
     .then(response => response.json())
     .then(data => {
         document.getElementById('guess').value = '';
-        let templateId = data.result ? 'correct-template' : 'error-template';
+        let templateId = 'error-template'
         const template = document.getElementById(templateId);
         const clone = document.importNode(template.content, true);
 
@@ -190,11 +241,13 @@ function submitGuess(guess) {
         }
 
         if (data.result) {
+            saveDivContents();
             characters.splice(0, characters.length);
             openPopup(guess)
         } else {
             const index = characters.indexOf(guess);
             characters.splice(index, 1);
+            saveDivContents();
         }
         
         document.getElementById('tries').appendChild(clone);
