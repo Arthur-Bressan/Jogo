@@ -43,15 +43,35 @@ def create_random_character():
         'TIMESTAMP': timestamp
     })
 
+@app.route('/clear_cookies')
+def clear_cookies():
+    script = """
+    <script>
+        function clearCookies() {
+            var cookies = document.cookie.split(";");
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                var eqPos = cookie.indexOf("=");
+                var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
+            alert('Cookies limpos!');
+        }
+        clearCookies();
+    </script>
+    """
+    return script
+
 def initialize_game():
     with app.test_request_context():
         global random_character
         response = create_random_character()
         random_character = response.get_json().get('random_character')
+        clear_cookies()
 
 hora_atual = datetime.now().strftime("%H:%M")
 
-if hora_atual == "23:12": 
+if hora_atual == "11:09": 
     initialize_game()
 
 @app.route('/characters/<name>', methods=['GET'])

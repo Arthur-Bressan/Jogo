@@ -29,6 +29,16 @@ function openPopup(guess) {
     tentativas_text.textContent = `Acertou em: ${tentativas} Tentativas`
 }
 
+function clearCookies() {
+    fetch('/clear_cookies')
+        .then(response => response.text())
+        .then(script => {
+            let scriptElement = document.createElement('script');
+            scriptElement.innerHTML = script;
+            document.body.appendChild(scriptElement);
+        });
+}
+
 function closePopup() {
     document.getElementById("myPopup").style.display = "none";
 }
