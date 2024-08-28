@@ -45,7 +45,7 @@ function closePopupTutorial() {
 loadDivContents();
 
 function setCookie(name, value, days) {
-    const date = new Date();
+    const date = new Date(); 
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
     const expires = "expires=" + date.toUTCString();
     document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
@@ -55,13 +55,13 @@ function setCookie(name, value, days) {
 function saveDivContents() {
     // Aguarda um pequeno atraso para garantir que todas as divs estejam no DOM
     setTimeout(() => {
-    const divs = document.querySelectorAll('.tentativa');
-    divs.forEach((div, index) => {
-        const divContent = div.outerHTML; // Salva o conteúdo completo da div
-        setCookie(`divContent${index}`, divContent, 1); // Salva o conteúdo com um nome de cookie único
-    });
-    setCookie('divCount', divs.length, 1); // Salva o número de divs
-    console.log(`Total divs saved: ${divs.length}`);
+        const divs = document.querySelectorAll('.tentativa');
+        divs.forEach((div, index) => {
+            const divContent = div.outerHTML; // Salva o conteúdo completo da div
+            setCookie(`divContent${index}`, divContent, 1); // Salva o conteúdo com um nome de cookie único
+        });
+        setCookie('divCount', divs.length, 1); // Salva o número de divs
+        console.log(`Total divs saved: ${divs.length}`);
     }, 100); // Ajuste o tempo conforme necessário
 }
 

@@ -1,6 +1,6 @@
 # **Requisitos:**
 
-## **Para rodar 'create_**db.py'
+## Para rodar 'create_db.py'
 
 ```
 pip install pandas
