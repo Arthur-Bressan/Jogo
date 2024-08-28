@@ -6,7 +6,7 @@ from datetime import datetime
 import requests
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app)
 
 def get_db_connection():
     conn = sqlite3.connect('backend\dados.db')
@@ -51,7 +51,7 @@ def initialize_game():
 
 hora_atual = datetime.now().strftime("%H:%M")
 
-if hora_atual == "00:00":
+if hora_atual == "21:51": 
     initialize_game()
 
 @app.route('/characters/<name>', methods=['GET'])
@@ -91,7 +91,6 @@ def verify_guess():
 
 
     if guessed_character_id == random_character_id:
-        initialize_game()
         return jsonify({"result": True, "age": "equal", "age_content": guessed_character_age, "country": True, "country_content": guessed_character_country, "sex": True, "sex_content": guessed_character_sex, "sport": True, "sport_content": guessed_character_sport, "status": True, "status_content": guessed_character_status})
     else:
         if random_character_sex == guessed_character_sex:

@@ -53,6 +53,8 @@ function setCookie(name, value, days) {
 }
 
 function saveDivContents() {
+    // Aguarda um pequeno atraso para garantir que todas as divs estejam no DOM
+    setTimeout(() => {
     const divs = document.querySelectorAll('.tentativa');
     divs.forEach((div, index) => {
         const divContent = div.outerHTML; // Salva o conteúdo completo da div
@@ -60,6 +62,7 @@ function saveDivContents() {
     });
     setCookie('divCount', divs.length, 1); // Salva o número de divs
     console.log(`Total divs saved: ${divs.length}`);
+    }, 100); // Ajuste o tempo conforme necessário
 }
 
 function getCookie(name) {
@@ -74,7 +77,6 @@ function getCookie(name) {
 }
 
 function loadDivContents() {
-    const container = document.getElementById('tries'); // Container onde as divs serão inseridas
     const divCount = getCookie('divCount'); // Obtém o número de divs salvas
     console.log(`Total divs to load: ${divCount}`);
 
@@ -82,15 +84,17 @@ function loadDivContents() {
         const divContent = getCookie(`divContent${i}`);
         if (!divContent) continue; // Pula se não houver conteúdo
 
+        // Cria um elemento temporário para extrair o conteúdo
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = divContent;
-        const content = tempDiv.firstElementChild;
-        container.appendChild(content); // Insere o conteúdo no container
-        console.log(`Div loaded: ${divContent}`);
+        const tries_cookies = tempDiv.querySelector(".tentativa .try-message").textContent;
+
+        // Chama a função submitGuess com o conteúdo extraído
+        submitGuess(tries_cookies);
+
+        console.log(`Div loaded: ${tries_cookies}`);
     }
 }
-
-
 
 function submitGuess(guess) {
     fetch('http://localhost:5000/characters/verifyGuess', {
