@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 
 def get_db_connection():
-    conn = sqlite3.connect('backend\dados.db')
+    conn = sqlite3.connect(f'backend\dados.db')
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -43,35 +43,16 @@ def create_random_character():
         'TIMESTAMP': timestamp
     })
 
-@app.route('/clear_cookies')
-def clear_cookies():
-    script = """
-    <script>
-        function clearCookies() {
-            var cookies = document.cookie.split(";");
-            for (var i = 0; i < cookies.length; i++) {
-                var cookie = cookies[i];
-                var eqPos = cookie.indexOf("=");
-                var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-                document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-            }
-            alert('Cookies limpos!');
-        }
-        clearCookies();
-    </script>
-    """
-    return script
-
+# Função para inicializar o jogo
 def initialize_game():
     with app.test_request_context():
         global random_character
         response = create_random_character()
         random_character = response.get_json().get('random_character')
-        clear_cookies()
 
 hora_atual = datetime.now().strftime("%H:%M")
 
-if hora_atual == "11:09": 
+if hora_atual == "15:48": 
     initialize_game()
 
 @app.route('/characters/<name>', methods=['GET'])

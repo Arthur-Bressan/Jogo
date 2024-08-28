@@ -49,17 +49,21 @@ function openTutorial() {
 
 function closePopupTutorial() {
     document.getElementById("tutorial").style.display = "none";
+
 }
 
 
 loadDivContents();
 
 function setCookie(name, value, days) {
+    if (!getCookie(name)) { // Verifica se o cookie já existe
     const date = new Date(); 
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
     const expires = "expires=" + date.toUTCString();
     document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
-    console.log(`Cookie set: ${name}=${value}`);
+    } else {
+        deleteCookiesAfterTime();
+    }
 }
 
 function saveDivContents() {
@@ -71,7 +75,6 @@ function saveDivContents() {
             setCookie(`divContent${index}`, divContent, 1); // Salva o conteúdo com um nome de cookie único
         });
         setCookie('divCount', divs.length, 1); // Salva o número de divs
-        console.log(`Total divs saved: ${divs.length}`);
     }, 100); // Ajuste o tempo conforme necessário
 }
 
@@ -90,6 +93,9 @@ function loadDivContents() {
     const divCount = getCookie('divCount'); // Obtém o número de divs salvas
     console.log(`Total divs to load: ${divCount}`);
 
+    // Cria um array para armazenar as divs temporariamente
+    const divsArray = [];
+
     for (let i = 0; i < divCount; i++) {
         const divContent = getCookie(`divContent${i}`);
         if (!divContent) continue; // Pula se não houver conteúdo
@@ -97,12 +103,32 @@ function loadDivContents() {
         // Cria um elemento temporário para extrair o conteúdo
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = divContent;
+        divsArray.push(tempDiv);
+    }
+
+    // Ordena as divsArray pelo índice
+    divsArray.sort((a, b) => {
+        const indexA = parseInt(a.querySelector('.tentativa').getAttribute('data-index'));
+        const indexB = parseInt(b.querySelector('.tentativa').getAttribute('data-index'));
+        return indexA - indexB;
+    });
+
+    // Carrega as divs na ordem correta
+    divsArray.forEach(tempDiv => {
         const tries_cookies = tempDiv.querySelector(".tentativa .try-message").textContent;
-
-        // Chama a função submitGuess com o conteúdo extraído
         submitGuess(tries_cookies);
+    });
+}
 
-        console.log(`Div loaded: ${tries_cookies}`);
+function deleteCookiesAfterTime() {
+    const now = new Date();
+    const currentHour = now.getHours();
+    const currentMinute = now.getMinutes();
+
+    if (currentHour === 0 || (currentHour === 0 && currentMinute >= 0)) {
+        document.cookie.split(";").forEach(function(c) {
+            document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+          });
     }
 }
 

@@ -4,12 +4,12 @@
 
 ###### Modo infinito - arthur
 
-###### Hospedagem - luiz e gustavo 
+###### Hospedagem - luiz e gustavo
 
 ###### Armazém de dados de partidas - lucas e h2
 
 # Doing:
 
-###### ~~Responsividade~~
+###### Responsividade
 
-agr vou fzr o modo infinito so tenho q pensar como
+###### Clear Cookies when past midnight
