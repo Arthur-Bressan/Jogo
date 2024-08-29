@@ -1,9 +1,8 @@
 
 // Inicializar
+let characters = [];
 
 initializeGame();
-
-let characters = [];
 
 // Jogadores
 
@@ -21,13 +20,6 @@ async function initializeGame() {
 
 let tentativas = 0
 
-function openPopup(guess) {
-    document.getElementById("myPopup").style.display = "block";
-    let jogador_text = document.getElementById("jogador")
-    let tentativas_text = document.getElementById("tentativas_popup")
-    jogador_text.textContent = guess
-    tentativas_text.textContent = `Acertou em: ${tentativas} Tentativas`
-}
 
 function clearCookies() {
     fetch('/clear_cookies')
@@ -60,13 +52,16 @@ function clearLocalStorage() {
 
 function saveDivContents() {
     setTimeout(() => {
-        clearLocalStorage(); // Limpa o localStorage antes de salvar novos dados
         const divs = document.querySelectorAll('.tentativa');
+        const today = new Date().getDate(); 
+
         divs.forEach((div, index) => {
-            div.setAttribute('data-index', index); // Adiciona o índice como atributo
+            div.setAttribute('data-index', index);
+            div.setAttribute('data-date', today); 
             const divContent = div.outerHTML;
             setLocalStorage(`divContent${index}`, divContent);
         });
+
         setLocalStorage('divCount', divs.length);
     }, 100);
 }
@@ -82,19 +77,26 @@ function loadDivContents() {
     const divsArray = [];
 
     for (let i = 0; i < divCount; i++) {
-        const divContent = getLocalStorage(`divContent${i}`);
-        if (!divContent) continue;
+        const today = new Date().getDate();
+        const divContentString = getLocalStorage(`divContent${i}`);
+        
+        if (!divContentString) continue;
 
         const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = divContent;
-        divsArray.push(tempDiv);
-    }
+        tempDiv.innerHTML = divContentString;
+        const divContent = tempDiv.firstElementChild;
 
-    divsArray.sort((a, b) => {
-        const indexA = parseInt(a.querySelector('.tentativa').getAttribute('data-index'));
-        const indexB = parseInt(b.querySelector('.tentativa').getAttribute('data-index'));
-        return indexA - indexB;
-    });
+        let date = divContent.getAttribute('data-date');
+        
+        if (date != today.toString()) {
+            console.log(date )
+            localStorage.removeItem(`divContent${i}`);
+            continue;
+        }
+
+        divsArray.push(divContent);
+        
+    }
 
     divsArray.forEach(tempDiv => {
         const tries_localStorage = tempDiv.querySelector(".tentativa .try-message").textContent;
@@ -109,18 +111,17 @@ function deleteLocalStorageAfterTime() {
 
     console.log(`Hora atual: ${currentHour}:${currentMinute}`);
 
-    if (currentHour === 23 && currentMinute === 1) {
+    if (currentHour === 10 && currentMinute === 43) {
         console.log("Hora de deletar os dados do localStorage");
         localStorage.clear();
-        console.log("Dados do localStorage deletados após as 22:42");
+        console.log("Dados do localStorage deletados após as 00:00");
     } else {
         console.log("Ainda não é hora de deletar os dados do localStorage");
     }
 }
 
-loadDivContents();
 deleteLocalStorageAfterTime();
-
+loadDivContents();
 
 
 function submitGuess(guess) {
