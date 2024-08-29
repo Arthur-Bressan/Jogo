@@ -4,6 +4,7 @@ import sqlite3
 import random
 from datetime import datetime
 import requests
+import pytz
 
 app = Flask(__name__)
 CORS(app)
@@ -50,7 +51,11 @@ def initialize_game():
         response = create_random_character()
         random_character = response.get_json().get('random_character')
 
-hora_atual = datetime.now().strftime("%H:%M")
+# O js trabalha com esse fuso horário então preciso alterar ao inves de usar o horario local usar o do js o GMT
+hora_atual = datetime.now()
+fuso_horario_gmt = pytz.timezone('GMT')
+hora_gmt = hora_atual.astimezone(fuso_horario_gmt)
+hora_gmt_formatada = hora_gmt.strftime("%H:%M")
 
 if hora_atual == "10:24": 
     initialize_game()
