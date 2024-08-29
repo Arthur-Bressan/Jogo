@@ -12,4 +12,4 @@
 
 ###### Responsividade
 
-###### Clear Cookies when past midnight
+###### ~~Clear Cookies when past midnight~~

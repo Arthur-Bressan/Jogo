@@ -49,88 +49,79 @@ function openTutorial() {
 
 function closePopupTutorial() {
     document.getElementById("tutorial").style.display = "none";
-
+}
+function setLocalStorage(name, value) {
+    localStorage.setItem(name, value);
 }
 
-
-loadDivContents();
-
-function setCookie(name, value, days) {
-    if (!getCookie(name)) { // Verifica se o cookie já existe
-        const date = new Date(); 
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        const expires = "expires=" + date.toUTCString();
-        document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
-    } else {
-        deleteCookiesAfterTime();
-    }
+function clearLocalStorage() {
+    localStorage.clear();
 }
 
 function saveDivContents() {
-    // Aguarda um pequeno atraso para garantir que todas as divs estejam no DOM
     setTimeout(() => {
+        clearLocalStorage(); // Limpa o localStorage antes de salvar novos dados
         const divs = document.querySelectorAll('.tentativa');
         divs.forEach((div, index) => {
-            const divContent = div.outerHTML; // Salva o conteúdo completo da div
-            setCookie(`divContent${index}`, divContent, 1); // Salva o conteúdo com um nome de cookie único
+            div.setAttribute('data-index', index); // Adiciona o índice como atributo
+            const divContent = div.outerHTML;
+            setLocalStorage(`divContent${index}`, divContent);
         });
-        setCookie('divCount', divs.length, 1); // Salva o número de divs
-    }, 100); // Ajuste o tempo conforme necessário
+        setLocalStorage('divCount', divs.length);
+    }, 100);
 }
 
-function getCookie(name) {
-    const nameEQ = name + "=";
-    const ca = document.cookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
-    }
-    return null;
+function getLocalStorage(name) {
+    return localStorage.getItem(name);
 }
 
 function loadDivContents() {
-    const divCount = getCookie('divCount'); // Obtém o número de divs salvas
+    const divCount = getLocalStorage('divCount');
     console.log(`Total divs to load: ${divCount}`);
 
-    // Cria um array para armazenar as divs temporariamente
     const divsArray = [];
 
     for (let i = 0; i < divCount; i++) {
-        const divContent = getCookie(`divContent${i}`);
-        if (!divContent) continue; // Pula se não houver conteúdo
+        const divContent = getLocalStorage(`divContent${i}`);
+        if (!divContent) continue;
 
-        // Cria um elemento temporário para extrair o conteúdo
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = divContent;
         divsArray.push(tempDiv);
     }
 
-    // Ordena as divsArray pelo índice
     divsArray.sort((a, b) => {
         const indexA = parseInt(a.querySelector('.tentativa').getAttribute('data-index'));
         const indexB = parseInt(b.querySelector('.tentativa').getAttribute('data-index'));
         return indexA - indexB;
     });
 
-    // Carrega as divs na ordem correta
     divsArray.forEach(tempDiv => {
-        const tries_cookies = tempDiv.querySelector(".tentativa .try-message").textContent;
-        submitGuess(tries_cookies);
+        const tries_localStorage = tempDiv.querySelector(".tentativa .try-message").textContent;
+        submitGuess(tries_localStorage);
     });
 }
 
-function deleteCookiesAfterTime() {
+function deleteLocalStorageAfterTime() {
     const now = new Date();
     const currentHour = now.getHours();
     const currentMinute = now.getMinutes();
 
-    if (currentHour === 0 || (currentHour === 0 && currentMinute >= 0)) {
-        document.cookie.split(";").forEach(function(c) {
-            document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
-          });
+    console.log(`Hora atual: ${currentHour}:${currentMinute}`);
+
+    if (currentHour === 23 && currentMinute === 1) {
+        console.log("Hora de deletar os dados do localStorage");
+        localStorage.clear();
+        console.log("Dados do localStorage deletados após as 22:42");
+    } else {
+        console.log("Ainda não é hora de deletar os dados do localStorage");
     }
 }
+
+loadDivContents();
+deleteLocalStorageAfterTime();
+
+
 
 function submitGuess(guess) {
     fetch('http://localhost:5000/characters/verifyGuess', {
@@ -241,10 +232,10 @@ function submitGuess(guess) {
         const countryDiv = clone.querySelector('#country');
         if (data.country) {
             countryDiv.style.backgroundImage = `url('https://raw.githubusercontent.com/HatScripts/circle-flags/gh-pages/flags/${data.country_content}.svg')`;
-            countryDiv.style.borderColor = "green";
+            countryDiv.style.borderColor = "#1AEB31";
         } else {
             countryDiv.style.backgroundImage = `url('https://raw.githubusercontent.com/HatScripts/circle-flags/gh-pages/flags/${data.country_content}.svg')`;
-            countryDiv.style.borderColor = "red";
+            countryDiv.style.borderColor = "#E21919";
 
         }
 
@@ -285,9 +276,9 @@ function submitGuess(guess) {
             characters.splice(0, characters.length);
             openPopup(guess)
         } else {
+            saveDivContents();
             const index = characters.indexOf(guess);
             characters.splice(index, 1);
-            saveDivContents();
         }
         
         document.getElementById('tries').appendChild(clone);

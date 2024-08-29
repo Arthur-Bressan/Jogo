@@ -52,7 +52,7 @@ def initialize_game():
 
 hora_atual = datetime.now().strftime("%H:%M")
 
-if hora_atual == "15:48": 
+if hora_atual == "18:52": 
     initialize_game()
 
 @app.route('/characters/<name>', methods=['GET'])
