@@ -35,6 +35,14 @@ function closePopup() {
     document.getElementById("myPopup").style.display = "none";
 }
 
+function openPopup(guess) {
+    document.getElementById("myPopup").style.display = "block";
+    let jogador_text = document.getElementById("jogador")
+    let tentativas_text = document.getElementById("tentativas_popup")
+    jogador_text.textContent = guess
+    tentativas_text.textContent = `Acertou em: ${tentativas} Tentativas`
+}
+
 function openTutorial() {
     document.getElementById("tutorial").style.display = "block";
 }
@@ -273,10 +281,12 @@ function submitGuess(guess) {
         }
 
         if (data.result) {
+            console.log(data.result)
             saveDivContents();
             characters.splice(0, characters.length);
             openPopup(guess)
         } else {
+            console.log(data.result)
             saveDivContents();
             const index = characters.indexOf(guess);
             characters.splice(index, 1);

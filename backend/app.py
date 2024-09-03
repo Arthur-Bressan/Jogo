@@ -53,12 +53,12 @@ def initialize_game():
 
 # O js trabalha com esse fuso horário então preciso alterar ao inves de usar o horario local usar o do js o GMT
 hora_atual = datetime.now()
-fuso_horario_gmt = pytz.timezone('GMT')
-hora_gmt = hora_atual.astimezone(fuso_horario_gmt)
-hora_gmt_formatada = hora_gmt.strftime("%H:%M")
+# fuso_horario_gmt = pytz.timezone('GMT')
+# hora_gmt = hora_atual.astimezone(fuso_horario_gmt)
+# hora_gmt_formatada = hora_gmt.strftime("%H:%M")
 
-if hora_atual == "10:24": 
-    initialize_game()
+# if hora_atual == "13:42": 
+initialize_game()
 
 @app.route('/characters/<name>', methods=['GET'])
 def get_character(name):
@@ -96,7 +96,7 @@ def verify_guess():
     guessed_character_status = data_guess.get("status")
 
 
-    if guessed_character_id == random_character_id:
+    if guessed_character_name == random_character_name:
         return jsonify({"result": True, "age": "equal", "age_content": guessed_character_age, "country": True, "country_content": guessed_character_country, "sex": True, "sex_content": guessed_character_sex, "sport": True, "sport_content": guessed_character_sport, "status": True, "status_content": guessed_character_status})
     else:
         if random_character_sex == guessed_character_sex:
