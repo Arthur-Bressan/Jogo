@@ -4,7 +4,6 @@ import sqlite3
 import random
 from datetime import datetime
 import requests
-import pytz
 
 app = Flask(__name__)
 CORS(app)
@@ -17,6 +16,14 @@ def get_db_connection():
 @app.route('/', methods=["GET"])
 def root_page():
     return "Online!"
+
+@app.route('/characters/get-hint', methods=['GET'])
+def get_hint1():
+    conn = get_db_connection()
+    hint1 = conn.execute('SELECT hint1, hint2, hint3, nickname FROM characters WHERE name = ?', (random_character, )).fetchall()
+    conn.close()
+    hints = [{'hint1': row['hint1'], 'hint2': row['hint2'], 'hint3': row['hint3'], 'nickname': row['nickname']} for row in hint1]
+    return jsonify(hints)
 
 @app.route('/characters', methods=['GET'])
 def get_characters():
@@ -46,18 +53,14 @@ def create_random_character():
 
 # Função para inicializar o jogo
 def initialize_game():
-    with app.test_request_context():
-        global random_character
-        response = create_random_character()
-        random_character = response.get_json().get('random_character')
+     with app.test_request_context():
+         global random_character
+         response = create_random_character()
+         random_character = response.get_json().get('random_character')
 
-# O js trabalha com esse fuso horário então preciso alterar ao inves de usar o horario local usar o do js o GMT
-hora_atual = datetime.now()
-# fuso_horario_gmt = pytz.timezone('GMT')
-# hora_gmt = hora_atual.astimezone(fuso_horario_gmt)
-# hora_gmt_formatada = hora_gmt.strftime("%H:%M")
+# hora_atual = datetime.now().strftime("%H:%M")
 
-# if hora_atual == "13:42": 
+# # # if hora_atual == "10:24": 
 initialize_game()
 
 @app.route('/characters/<name>', methods=['GET'])
@@ -78,7 +81,6 @@ def verify_guess():
     data_guess = response_guess.json()
     response = requests.get(f"http://127.0.0.1:5000/characters/{random_character}")
     data = response.json()
-
     random_character_age = data.get("age")
     random_character_country = data.get("country")
     random_character_id = data.get("id")
@@ -96,7 +98,7 @@ def verify_guess():
     guessed_character_status = data_guess.get("status")
 
 
-    if guessed_character_name == random_character_name:
+    if guessed_character_id == random_character_id:
         return jsonify({"result": True, "age": "equal", "age_content": guessed_character_age, "country": True, "country_content": guessed_character_country, "sex": True, "sex_content": guessed_character_sex, "sport": True, "sport_content": guessed_character_sport, "status": True, "status_content": guessed_character_status})
     else:
         if random_character_sex == guessed_character_sex:

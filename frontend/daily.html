@@ -14,6 +14,8 @@
 
 </head>
 <body>
+    <div class="background"></div>
+    
     <template id="error-template">
         <div class="tentativa">
             <div class="error-name-container">
@@ -37,14 +39,33 @@
                 <p id="jogador"></p>
                 <p id="tentativas_popup"></p>
                 <p id="time_popup"></p>
+                <p id="hint_popup"></p>
             </div>
         </div>
 
         <div id="tutorial" class="popup_tutorial">
             <div class="popup-content">
                 <span class="close" onclick="closePopupTutorial()">&times;</span>
-                <h1>Como Jogar?</h1>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus necessitatibus fugit nihil commodi deleniti ipsam quas, cupiditate ex impedit velit pariatur sunt culpa, at optio fuga! Veniam quod libero quae.</p>
+                <h1>Como Jogar?</h1> 
+                <p style="font-size: 20px;">O objetivo do jogo é adivinhar o atleta com base nas informações mostradas abaixo.</p>
+                <div class="info">
+                    <p>Nome</p>
+                    <p>Gênero</p> 
+                    <p>Esporte</p>
+                    <p>Nacionalidade</p>
+                    <p>Atividade</p>
+                    <p>Idade</p>
+                </div>
+
+                <ul id="list">
+                    <li>Digite o nome de um atleta no campo de entrada e selecione o nome correspondente. Se não aparecer nenhum, o jogador que você procura ainda não foi adicionado ao jogo.</li>
+                    </br>
+                    <li>As características corretas serão indicadas pela cor verde, elas são consideradas corretas quando forem iguais ao atleta que você terá que acertar.</li>
+                    </br>
+                    <li>Se tiver alguma dúvida durante o jogo, você poderá passar o mouse sobre cada característica para obter mais informações.</li>
+                    </br>
+                    <li>O jogo acabará quando o atleta do dia for acertado.</li>
+                </ul>
             </div>
         </div>
 
@@ -54,18 +75,33 @@
             <div id="guess_block">
                 <input type="text" id="guess" placeholder="Nome do Atleta..." onfocus="showAllSuggestions()" onblur="hideAllSuggestions()" oninput="showSuggestions()">
                 <i class="fa-regular fa-arrow-turn-down-left"></i>
+                <button id="hint_button" onclick="gethints()"> <strong>?</strong> </button>
+                <!-- <i class="fa-regular fa-lightbulb no-hover" style="font-size: 25px;"></i> -->
             </div>
+            <div id="hint_text"></div>
             <div id="suggestions"></div>
         </div>
         
         <div class="legenda">
-            <p>Nome</p>
-            <p>Gênero</p> 
-            <p>Esporte</p>
-            <p>País</p>
-            <p>Ativo</p>
-            <p>Idade</p>
-          </div>
+            <p class="hover-target" id="name" style="color: black;"><u>Nome<strong>?</strong></u></p>
+            <div class="hover-info" id="name-info">O nome é o que você digitou.</div>
+        
+            <p class="hover-target" id="gender" style="color: black;"><u>Gênero<strong>?</strong></u></p>
+            <div class="hover-info" id="gender-info">O gênero ♀️ representa feminino, já o ♂️ representa masculino.</div>
+        
+            <p class="hover-target" id="sport" style="color: black;"><u>Esporte<strong>?</strong></u></p>
+            <div class="hover-info" id="sport-info">O ícone representa o objeto utilizado em cada esporte.</div>
+        
+            <p class="hover-target" id="country" style="color: black;"><u>Nacionalidade<strong>?</strong></u></p>
+            <div class="hover-info" id="country-info">É o país de origem do atleta que foi digitado. Se a borda estiver vermelha, ele é diferente do atleta do dia; se for verde, é a mesma Nacionalidade.</div>
+        
+            <p class="hover-target" id="active" style="color: black;"><u>Atividade<strong>?</strong></u></p>
+            <div class="hover-info" id="active-info">Inativo é o jogador que já se aposentou; ativo é o que ainda está jogando.</div>
+        
+            <p class="hover-target" id="age" style="color: black;"><u>Idade<strong>?</strong></u></p>
+            <div class="hover-info" id="age-info">A seta apontando para cima indica uma idade maior do que a escrita, e a seta para baixo indica uma idade menor.</div>
+        </div>
+        
         <div id="tries"></div>
     </div>
     <script src="daily.js"></script>

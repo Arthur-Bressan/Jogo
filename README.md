@@ -3,6 +3,8 @@
 ## Para rodar 'create_db.py'
 
 ```
+pip install openpyxl
+
 pip install pandas
 ```
 
@@ -18,8 +20,4 @@ pip install flask_cors
 
 ```
 pip install requests
-```
-
-```
-pip install pytz
 ```
