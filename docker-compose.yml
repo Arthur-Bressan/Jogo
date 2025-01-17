@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "8056:80" # Porta pública 8080 mapeada para a 80 do contêiner
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    restart: always
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "8055:5000" # Porta pública 5000 mapeada para a 5000 do contêiner
+    volumes:
+      - ./backend:/app
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=production
+    restart: always

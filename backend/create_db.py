@@ -1,9 +1,9 @@
 import pandas as pd
 import sqlite3
 
-df = pd.read_excel('backend/dados.xlsx')
+df = pd.read_excel('./dados.xlsx')
 
-conn = sqlite3.connect('backend/dados.db')
+conn = sqlite3.connect('./dados.db')
 cursor = conn.cursor()
 
 cursor.execute('''

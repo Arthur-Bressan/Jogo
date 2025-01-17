@@ -59,7 +59,7 @@ setInterval(changeBackground, 20000);
 // Jogadores
 
 async function fetchCharacters() {
-  const response = await fetch("http://localhost:5000/characters");
+  const response = await fetch("https://api.sportsle.games/characters");
   const characters = await response.json();
   return characters.map((character) => character.name);
 }
@@ -78,7 +78,7 @@ function gethints() {
   clique += 1;
   dicas = true;
   localStorage.setItem("usouDicas", dicas);
-  fetch("http://127.0.0.1:5000/characters/get-hint")
+  fetch("https://api.sportsle.games/characters/get-hint")
     .then((response) => response.json())
     .then((data) => {
       data.forEach((character) => {
@@ -238,7 +238,7 @@ deleteLocalStorageAfterTime();
 loadDivContents();
 
 function submitGuess(guess) {
-  fetch("http://localhost:5000/characters/verifyGuess", {
+  fetch("https://api.sportsle.games/characters/verifyGuess", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
