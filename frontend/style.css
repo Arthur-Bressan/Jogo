@@ -17,7 +17,6 @@ body {
 }
 
 #age {
-    display: flex;
     justify-content: center;
     align-items: center;
     border-color: #000000;
@@ -66,6 +65,8 @@ body {
     cursor: pointer;
     margin: 10px 0;
 }
+
+.hover-target:hover + .hover-info { display: block;}
 
 .bayon-regular {
     font-family: "Bayon", sans-serif;
@@ -335,7 +336,7 @@ input {
     font-size: 16px;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (min-width: 900px) {
     #game {
         width: 90%;
         background-color: #ffffff;
@@ -371,59 +372,54 @@ input {
    
   }
 
-@media only screen and (max-width: 500px) {
+ @media only screen and (min-width: 500px) {
     #game {
-        width: 90%;
+        width: 100%;
         background-color: #ffffff;
     }
 
     #guess {
         height: 20px;
-        width: 60%;
+        width: 70%;
     }
 
-    .img_tentativa {
-        width: 50px;
-        height: 50px;
-        border-width: 2px;
-
+    #hint_button {
+        display: flex;
+        align-items: center;
+        height: 40px;
+        width: 40px;
     }
-    
+
     .tentativa {
-        grid-template-columns: 24vw 13.3vw 13.3vw 13.3vw 13.3vw 13.3vw;
+        grid-template-columns: 1vw 1vw 1vw 1vw 1vw 1vw;
         max-height: 70px;
         min-height: 70px;
-        width: 105%;
+        width: 110%;
         
     }   
 
-    .legenda {
-        grid-template-columns: 14.5vw 14.5vw 14.5vw 14.5vw 14.5vw 14.5vw;
+
+  } 
+
+@media only screen and (min-width: 400px) {
+    #game{
+        width: 80%;
     }
-
-    .try-message {
-        font-size: 13px;
-    }
-
-    .info {
-        grid-template-columns: auto;
-    }
-
-  }
-
-@media only screen and (max-width: 400px) {
     .legenda {
         justify-content: center;
         align-items: center;
-        grid-template-columns: 15.5vw 15.5vw 15.5vw 15.5vw 15.5vw 15.5vw;
-        font-size: 15px;
+        grid-template-columns: 10vw 10vw 10vw 10vw 10vw 10vw;
+    }
+
+    .legenda u {
+        font-size: 3vw;
     }
 
     .tentativa {
-        grid-template-columns: 25vw 13vw 13vw 13vw 13vw 13vw;
+        grid-template-columns: 10vw 10vw 10vw 10vw 10vw 10vw;
         max-height: 60px;
         min-height: 60px;
-        width: 107%;
+        width: 90%;
     }  
 
     .img_tentativa {
@@ -433,22 +429,85 @@ input {
         border-width: 2px;
     }
 
+    .img_tentativa {
+        width: 10px;
+        height: 10px;
+        font-size: 12px;
+        border-width: 2px;
+    }
+
     .info {
         grid-template-columns: auto;
     }
 
+    
   }
 
-  @media only screen and (max-width: 374px) {
+  @media only screen and (min-width: 374px) {
     .legenda {
         justify-content: center;
         align-items: center;
-        grid-template-columns: 15.5vw 15.5vw 15.5vw 15.5vw 15.5vw 15.5vw;
-        font-size: 12px;
+        grid-template-columns: 13vw 10vw 15vw 18vw 17vw 9vw;
+    }
+
+    .legenda u{
+        font-size: 2.7vw;
     }
 
     .tentativa {
-        grid-template-columns: 21vw 14.5vw 14.5vw 14.5vw 14.5vw 14.5vw;
+        grid-template-columns: 14vw 14vw 14vw 14vw 14vw 14vw;
+        max-height: 60px;
+        min-height: 55px;
+        width: 106%;
+    }  
+
+    .try-message{
+        font-size: 0.7em;
+    }
+
+    .img_tentativa {
+        width: 40px;
+        height: 40px;
+        font-size: 12px;
+        border-width: 2px;
+    }
+
+    .info {
+        grid-template-columns: auto;
+    }
+  }
+
+  @media only screen and (min-width: 350px) {
+    #game{
+        width: 80%;
+    }
+
+    #guess{
+        height: 15%;
+        width: 70%;
+        font-size: 13px;
+    }
+
+    #hint_button{
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        font-size: 25px;
+    }
+
+    .legenda {
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: 10vw 14vw 12vw 22vw 15vw 10vw;
+    }
+
+    .legenda u{
+        font-size: 2.7vw;
+    }
+
+    .tentativa {
+        grid-template-columns: 17vw 13vw 13vw 13vw 13vw 13vw;
         max-height: 60px;
         min-height: 55px;
         width: 110%;
@@ -463,5 +522,84 @@ input {
         height: 40px;
         font-size: 12px;
         border-width: 2px;
+    }
+
+    .info {
+        grid-template-columns: auto;
+    }
+  }
+
+
+  @media only screen and (min-width: 540px) {
+    .legenda {
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: 12vw 12vw 15vw 23vw 15vw 12vw;
+    }
+
+    .legenda u{
+        font-size: 3vw;
+    }
+
+    .tentativa {
+        grid-template-columns: 20vw 14.5vw 14.5vw 14.5vw 14.5vw 14.5vw;
+        max-height: 60px;
+        min-height: 55px;
+        width: 105%;
+
+    }  
+
+    .try-message{
+        font-size: 0.7em;
+    }
+
+    .img_tentativa {
+        width: 60px;
+        height: 60px;
+        font-size: 12px;
+        border-width: 2px;
+    }
+
+    .info {
+        grid-template-columns: auto;
+    }
+  }
+
+  @media only screen and (min-width: 1000px) {
+    .legenda {
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: 10vw 12vw 11vw 16vw 9vw 9vw;
+    }
+
+    .legenda u{
+        font-size: 2vw;
+    }
+
+    .tentativa {
+        grid-template-columns: 12vw 12vw 12vw 12vw 10.5vw 10.5vw;
+        max-height: 60px;
+        min-height: 55px;
+        width: 100%;
+
+    }  
+
+    .try-message{
+        font-size: 1.5vw;
+    }
+
+    .img_tentativa {
+        width: 60px;
+        height: 60px;
+        font-size: 12px;
+        border-width: 2px;
+    }
+
+    #game{
+        width: 70%;
+    }
+
+    .info {
+        grid-template-columns: auto;
     }
   }
