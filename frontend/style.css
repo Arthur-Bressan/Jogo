@@ -138,6 +138,7 @@ input {
     width: 45px;
     transition: 0.3s;
     font-size: 32px;
+    color: black;
 }
 
 #hint_button:hover{
@@ -350,14 +351,18 @@ input {
     }
     
     .tentativa {
-        grid-template-columns: 16vw 15vw 15vw 15vw 15vw 15vw;
+        grid-template-columns: 10vw 10vw 10vw 10vw 10vw 10vw;
         max-height: 90px;
         min-height: 90px;
-        width: 101%;
+        width: 100%;
     }   
 
     .legenda {
         grid-template-columns: 15vw 15vw 15vw 15vw 15vw 15vw;
+    }
+
+    .legenda u {
+        font-size: 11vw;
     }
 
     .try-message {
@@ -386,15 +391,14 @@ input {
     #hint_button {
         display: flex;
         align-items: center;
-        height: 40px;
-        width: 40px;
+        height: 45px;
+        width: 45px;
     }
 
     .tentativa {
-        grid-template-columns: 1vw 1vw 1vw 1vw 1vw 1vw;
+        grid-template-columns: 0.1vw 0.1vw 0.1vw 0.1vw 0.1vw 0.1vw;
         max-height: 70px;
         min-height: 70px;
-        width: 110%;
         
     }   
 
@@ -421,13 +425,6 @@ input {
         min-height: 60px;
         width: 90%;
     }  
-
-    .img_tentativa {
-        width: 45px;
-        height: 45px;
-        font-size: 14px;
-        border-width: 2px;
-    }
 
     .img_tentativa {
         width: 10px;
@@ -458,7 +455,7 @@ input {
         grid-template-columns: 14vw 14vw 14vw 14vw 14vw 14vw;
         max-height: 60px;
         min-height: 55px;
-        width: 106%;
+        width: 100%;
     }  
 
     .try-message{
@@ -534,15 +531,15 @@ input {
     .legenda {
         justify-content: center;
         align-items: center;
-        grid-template-columns: 12vw 12vw 15vw 23vw 15vw 12vw;
+        grid-template-columns: 13vw 12vw 16vw 18vw 16vw 8vw;
     }
 
     .legenda u{
-        font-size: 3vw;
+        font-size: 2.7vw;
     }
 
     .tentativa {
-        grid-template-columns: 20vw 14.5vw 14.5vw 14.5vw 14.5vw 14.5vw;
+        grid-template-columns: 14vw 14vw 14vw 14vw 14vw 14vw;
         max-height: 60px;
         min-height: 55px;
         width: 105%;
@@ -554,8 +551,8 @@ input {
     }
 
     .img_tentativa {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
         font-size: 12px;
         border-width: 2px;
     }
@@ -573,13 +570,13 @@ input {
     }
 
     .legenda u{
-        font-size: 2vw;
+        font-size: 1.4vw;
     }
 
     .tentativa {
         grid-template-columns: 12vw 12vw 12vw 12vw 10.5vw 10.5vw;
-        max-height: 60px;
-        min-height: 55px;
+        max-height: 100px;
+        min-height: 60px;
         width: 100%;
 
     }  
@@ -589,8 +586,8 @@ input {
     }
 
     .img_tentativa {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
         font-size: 12px;
         border-width: 2px;
     }
@@ -602,4 +599,146 @@ input {
     .info {
         grid-template-columns: auto;
     }
+  }
+
+  
+  @media only screen and (min-width: 1300px) {
+    .legenda {
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: 10vw 12vw 11vw 16vw 9vw 9vw;
+    }
+
+    .legenda u{
+        font-size: 1.4vw;
+    }
+
+    .tentativa {
+        grid-template-columns: 12vw 12vw 12vw 12vw 10.5vw 10.5vw;
+        max-height: 90px;
+        min-height: 60px;
+        width: 100%;
+
+    }  
+
+    .try-message{
+        margin-top: 10 ;
+        font-size: 1.5vw;
+    }
+
+    .img_tentativa {
+        width: 80px;
+        height: 80px;
+        font-size: 16px;
+        border-width: 2px;
+    }
+
+    #game{
+        width: 70%;
+    }
+
+    .info {
+        grid-template-columns: auto;
+    }
+  }
+
+  @media only screen and (min-width: 1500px) {
+    .legenda {
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: 10vw 12vw 11vw 16vw 9vw 9vw;
+    }
+
+    .legenda u{
+        font-size: 1.1vw;
+    }
+
+    .tentativa {
+        grid-template-columns: 12vw 12vw 12vw 12vw 10.5vw 10.5vw;
+        max-height: 90px;
+        min-height: 60px;
+        width: 100%;
+
+    }  
+
+    .try-message{
+        font-size: 1.5vw;
+        margin-top: 10px ;
+    }
+
+    .img_tentativa {
+        width: 80px;
+        height: 80px;
+        font-size: 16px;
+        border-width: 2px;
+    }
+
+    #game{
+        width: 70%;
+    }
+
+    .info {
+        grid-template-columns: auto;
+    }
+
+    #guess {
+        height: 30px;
+        font-size: 20px;
+    }
+
+    #hint_button {
+        height: 50px;
+        width: 50px;
+    }
+
+  }
+
+  @media only screen and (min-width: 1800px) {
+    .legenda {
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: 10vw 12vw 11vw 16vw 9vw 9vw;
+    }
+
+    .legenda u{
+        font-size: 1vw;
+    }
+
+    .tentativa {
+        grid-template-columns: 12vw 12vw 12vw 12vw 10.5vw 10.5vw;
+        max-height: 90px;
+        min-height: 60px;
+        width: 100%;
+
+    }  
+
+    .try-message{
+        font-size: 1.2vw;
+    }
+
+    .img_tentativa {
+        width: 90px;
+        height: 90px;
+        font-size: 16px;
+        border-width: 2px;
+    }
+
+    #game{
+        width: 70%;
+    }
+
+    .info {
+        grid-template-columns: auto;
+    }
+
+    #guess {
+        height: 30px;
+        font-size: 20px;
+    }
+
+    #hint_button {
+        height: 50px;
+        width: 50px;
+    }
+
   }
