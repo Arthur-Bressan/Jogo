@@ -13,6 +13,66 @@ body {
     transition: background-image 0.5s ease-in-out;
 }
 
+#language-selector {
+    margin-top: 20px; /* Distância do topo */
+    margin-left: auto; /* Alinha à direita */
+    display: flex;
+    align-items: center;
+    font-family: "Be Vietnam Pro", sans-serif; /* Use a fonte do seu projeto */
+    position: absolute; /* Fixa o select na posição desejada */
+    top: 20px; /* Distância do topo do contêiner */
+    z-index: 1000; /* Garante que o select fique sobre outros elementos */
+  }
+
+  #language-selector label {
+    font-size: 16px;
+    margin-right: 10px;
+    color: #333;
+    font-weight: bold;
+  }
+
+
+/* Estilo do próprio select */
+#language {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    font-size: 16px;
+    background-color: #fff;
+    color: #333;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: inherit;
+  }
+  
+  /* Estilo do select ao passar o mouse */
+  #language:hover {
+    border-color: #000000;
+    box-shadow: 0 4px 8px rgba(0, 128, 0, 0.2);
+  }
+  
+  /* Estilo do select quando está focado */
+  #language:focus {
+    outline: none;
+    border-color: #000000;
+    box-shadow: 0 0 5px #000000;
+  }
+  
+  /* Estilo das opções dentro do select */
+  #language option {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  /* Estilo das opções ao passar o mouse sobre elas */
+  #language option:hover {
+    background-color: #f0f0f0;
+    color: #4caf50;
+  }
+
 #age {
     justify-content: center;
     align-items: center;
