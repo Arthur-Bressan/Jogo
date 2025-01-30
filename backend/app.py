@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 
 def get_db_connection():
-    conn = sqlite3.connect('backend/dados.db')
+    conn = sqlite3.connect('backend\dados.db')
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -60,7 +60,7 @@ def initialize_game():
 
 # hora_atual = datetime.now().strftime("%H:%M")
 
-# # # if hora_atual == "10:24": 
+#if hora_atual == "10:24": 
 initialize_game()
 
 @app.route('/characters/<name>', methods=['GET'])
