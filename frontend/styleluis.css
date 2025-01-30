@@ -1,0 +1,344 @@
+/* Estilos Globais */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f0f0f0;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+#language-selector {
+  margin-top: 20px; /* Distância do topo */
+  margin-left: 20px; /* Alinha à esquerda */
+  display: flex;
+  align-items: center;
+  font-family: "Be Vietnam Pro", sans-serif; /* Fonte do projeto */
+  position: relative; /* Mantém dentro do background */
+  z-index: 1000; /* Garante que fique sobre outros elementos */
+}
+
+#language-selector label {
+  font-size: 16px;
+  margin-right: 10px;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Estilo do próprio select */
+#language {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-family: inherit;
+}
+
+/* Estilo do select ao passar o mouse */
+#language:hover {
+  border-color: #000000;
+  box-shadow: 0 4px 8px rgba(0, 128, 0, 0.2);
+}
+
+/* Estilo do select quando está focado */
+#language:focus {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 5px #000000;
+}
+
+/* Estilo das opções dentro do select */
+#language option {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Estilo das opções ao passar o mouse sobre elas */
+#language option:hover {
+  background-color: #f0f0f0;
+  color: #4caf50;
+}
+
+
+/* Lingua responsiva(tentativa) */
+
+@media only screen and (max-width: 768px) {
+  #language-selector {
+    max-width: 150px; /* Limita a largura máxima do seletor */
+  }
+
+  #language {
+    font-size: 14px; /* Reduz o tamanho da fonte */
+    padding: 6px 10px; /* Diminui o padding */
+    max-width: 120px; /* Limita a largura máxima do select */
+  }
+
+  #language-selector label {
+    font-size: 14px; /* Ajusta o tamanho da fonte do label */
+  }
+}
+
+/* Estilos para telas com largura máxima de 480px */
+@media only screen and (max-width: 480px) {
+  #language-selector {
+    max-width: 100px; /* Limita ainda mais a largura máxima do seletor */
+    margin: 10px; /* Diminui a margem */
+  }
+
+  #language {
+    font-size: 10px; /* Reduz ainda mais o tamanho da fonte */
+    padding: 4px 7px; /* Diminui ainda mais o padding */
+    max-width: 100px; /* Limita ainda mais a largura máxima do select */
+  }
+
+  #language-selector label {
+    font-size: 10px; /* Ajusta o tamanho da fonte do label */
+  }
+}
+
+.background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 86%;
+  height: auto;
+  margin: 0;
+  background-color: white;
+}
+
+h1{
+  text-align: left;
+  font-size: 25px;
+  color: #000;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+h3{
+    text-align: left;
+    font-size: 25px;
+    color: #000;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+  }
+
+p {
+  text-align: justify;
+  color: #000;
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+/* Logo */
+.logo {
+  margin: 10px;
+}
+
+/* Navegação */
+nav ul {
+  list-style: none;
+  margin: 30px 0;
+  padding: 0;
+  display: flex;
+  gap: 50px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+}
+
+/* Seções */
+.game {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background: white;
+  padding: 20px;
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+  width: 86%;
+  margin-top: 50px;
+}
+
+.About-us, .SNCT2024 {
+  width: 72%;
+  padding: 20px;
+  border: 3px solid #000;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Botão Geral */
+.btn {
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 45px;
+  margin: 0 0 2em;
+  max-width: 160px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: auto; /* Ajuste automático com base no conteúdo */
+  display: inline-block; /* Certifica-se de que o botão seja renderizado corretamente */
+  text-align: center;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+/* Botão Específico */
+.btn-1 {
+  background: #204dba; /* Cor escura ajustada manualmente */
+  font-weight: 100;
+  position: relative;
+  padding: 0 20px; /* Espaçamento interno */
+  border: none;
+  border-radius: 5px; /* Deixe o botão com bordas arredondadas */
+  display: inline-block;
+
+  svg {
+    height: 45px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10px ;
+  }
+
+  rect {
+    fill: none;
+    stroke: #000000;
+    stroke-width: 2;
+    stroke-dasharray: 422, 0;
+    transition: all 0.35s linear;
+  }
+
+  &:hover {
+    background: rgba(32, 77, 186, 0.7); /* Cor semitransparente ao passar o mouse */
+    font-weight: 900;
+    letter-spacing: 1px;
+
+    rect {
+      stroke-width: 5;
+      stroke-dasharray: 15, 310;
+      stroke-dashoffset: 48;
+      transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+  }
+}
+
+/* Contatos */
+.contados {
+  background: #204dba;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 150px;
+  margin-top: 50px;
+}
+
+.contados a img {
+  width: 40px;
+  height: 35px;
+  transition: transform 0.2s;
+}
+
+.contados a img:hover {
+  transform: scale(1.1);
+}
+
+.background {
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .background.fade-out {
+    opacity: 0;
+  }
+  
+  /* Mídia Queries para Responsividade */
+/* Mídia Queries para Responsividade */
+@media (max-width: 768px) {
+  /* Para telas de tablets */
+  h1, h3 {
+    font-size: 22px;
+  }
+
+  nav ul {
+    flex-direction: column; /* Organiza os itens da navegação em uma coluna */
+    gap: 30px;
+  }
+
+  .game {
+    width: 80%; /* Ajusta a largura das divs para ocupar 100% da largura da tela */
+    margin-top: 30px;
+    padding: 10px;
+  }
+
+  .contados {
+    gap: 30px;
+  }
+
+  .btn-1 {
+    padding: 0 15px;
+    font-size: 14px;
+  }
+}
+.logo img {
+  height: 150px; /* Ajusta a altura da logo em telas menores */
+}
+
+@media (max-width: 480px) {
+  /* Para telas de celulares */
+  h1, h3 {
+    font-size: 18px;
+  }
+  .logo img {
+    height: 120px; /* Ajusta a altura da logo em telas pequenas */
+  }
+
+  nav ul {
+    gap: 20px;
+  }
+
+  .game {
+    width: 80%; /* Ajusta a largura das divs para ocupar 100% da largura da tela */
+    margin-top: 20px;
+    padding: 8px;
+  }
+
+  .btn-1 {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+
+  .contados {
+    gap: 20px;
+  }
+}
+
+#jogo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto; /* Centraliza horizontalmente */
+  text-align: center;
+}

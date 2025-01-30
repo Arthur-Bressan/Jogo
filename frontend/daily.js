@@ -7,9 +7,25 @@ function moveInfo(e, infoDiv) {
   const offsetX = 15; // Distância em pixels do mouse
   const offsetY = 15;
 
-  // Atualiza a posição da div de informações conforme o mouse
-  infoDiv.style.left = e.pageX + offsetX + "px";
-  infoDiv.style.top = e.pageY + offsetY + "px";
+  // Obtém as dimensões da tela e da div de informações
+  const screenWidth = window.innerWidth;
+  const screenHeight = window.innerHeight;
+  const infoWidth = infoDiv.offsetWidth;
+  const infoHeight = infoDiv.offsetHeight;
+
+  let newX = e.pageX + offsetX;
+  let newY = e.pageY + offsetY;
+
+  // Ajusta a posição para não ultrapassar os limites da tela
+  if (newX + infoWidth > screenWidth) {
+    newX = screenWidth - infoWidth - offsetX;
+  }
+  if (newY + infoHeight > screenHeight) {
+    newY = screenHeight - infoHeight - offsetY;
+  }
+
+  infoDiv.style.left = `${newX}px`;
+  infoDiv.style.top = `${newY}px`;
 }
 
 // Adiciona evento de 'mouseenter' e 'mousemove' nos parágrafos
@@ -17,21 +33,116 @@ hoverTargets.forEach((target, index) => {
   const infoDiv = hoverInfos[index];
 
   target.addEventListener("mouseenter", () => {
-    infoDiv.style.display = "block"; // Mostra a div de informações ao passar o mouse
+    infoDiv.style.display = "block";
+    infoDiv.setAttribute("data-visible", "true"); // Marca como visível
   });
 
   target.addEventListener("mousemove", (e) => {
-    moveInfo(e, infoDiv); // Move a div conforme o movimento do mouse
+    moveInfo(e, infoDiv);
   });
 
   target.addEventListener("mouseleave", () => {
-    infoDiv.style.display = "none"; // Esconde a div quando o mouse sai do parágrafo
+    infoDiv.style.display = "none";
+    infoDiv.removeAttribute("data-visible"); // Remove a marcação de visibilidade
   });
 });
 
-// Inicializar
+// Esconde a div de informações ao clicar fora dela em dispositivos móveis
+document.addEventListener("click", (e) => {
+  hoverInfos.forEach((infoDiv) => {
+    if (!infoDiv.contains(e.target) && !Array.from(hoverTargets).some(target => target.contains(e.target))) {
+      if (infoDiv.getAttribute("data-visible") !== "true") {
+        infoDiv.style.display = "none";
+      }
+    }
+  });
+});
+
+///////
+
+const translations = {};
+let currentLang = "pt";
+
+// Função para carregar as traduções
+async function loadTranslations() {
+  try {
+    const response = await fetch("translations.json");
+    if (!response.ok) {
+      throw new Error(`Erro ao carregar o arquivo: ${response.statusText}`);
+    }
+    Object.assign(translations, await response.json());
+    applyTranslations();
+  } catch (error) {
+    console.error("Erro ao carregar as traduções:", error);
+  }
+}
+
+// Função para aplicar as traduções
+function applyTranslations() {
+  const langData = translations[currentLang];
+  if (!langData) {
+    console.error(`Tradução para "${currentLang}" não encontrada.`);
+    return;
+  }
+
+  document.getElementById("how_to_play").innerText = langData.how_to_play;
+  document.getElementById("game_objective").innerText = langData.tutorial.game_objective;
+
+  document.getElementById("title").innerText = langData.title;
+  document.getElementById("guess_athlete").innerText = langData.guess_athlete;
+  document.getElementById("tentativas").innerText = langData.attempts;
+
+  // Atualizando as legendas
+  const legenda = langData.legenda;
+  document.getElementById(
+    "name"
+  ).innerHTML = `<u>${legenda.name}<strong>?</strong></u>`;
+  document.getElementById("name-info").innerText = legenda.name_info;
+  document.getElementById(
+    "gender"
+  ).innerHTML = `<u>${legenda.gender}<strong>?</strong></u>`;
+  document.getElementById("gender-info").innerText = legenda.gender_info;
+  document.getElementById(
+    "sport"
+  ).innerHTML = `<u>${legenda.sport}<strong>?</strong></u>`;
+  document.getElementById("sport-info").innerText = legenda.sport_info;
+  document.getElementById(
+    "country"
+  ).innerHTML = `<u>${legenda.country}<strong>?</strong></u>`;
+  document.getElementById("country-info").innerText = legenda.country_info;
+  document.getElementById(
+    "active"
+  ).innerHTML = `<u>${legenda.active}<strong>?</strong></u>`;
+  document.getElementById("active-info").innerText = legenda.active_info;
+  document.getElementById(
+    "age"
+  ).innerHTML = `<u>${legenda.age}<strong>?</strong></u>`;
+  document.getElementById("age-info").innerText = legenda.age_info;
+
+  // Atualizando as instruções
+  const instructions = document.getElementById("instructions");
+  instructions.innerHTML = ""; // Limpar instruções antigas
+  langData.instructions.forEach((text) => {
+    const li = document.createElement("li");
+    li.innerText = text;
+    instructions.appendChild(li);
+  });
+}
+
+// Função chamada quando a seleção de idioma muda
+function changeLanguage() {
+  const languageSelect = document.getElementById("language");
+  currentLang = languageSelect.value; // Define o idioma selecionado
+  applyTranslations();
+}
+
+// Carregar traduções quando a página for carregada
+loadTranslations();
+
+////////////////////////
 
 let characters = [];
+// Inicializar
 initializeGame();
 
 const images = [
@@ -59,7 +170,7 @@ setInterval(changeBackground, 20000);
 // Jogadores
 
 async function fetchCharacters() {
-  const response = await fetch("https://api.sportsle.games/characters");
+  const response = await fetch("http://localhost:5000/characters");
   const characters = await response.json();
   return characters.map((character) => character.name);
 }
@@ -78,27 +189,27 @@ function gethints() {
   clique += 1;
   dicas = true;
   localStorage.setItem("usouDicas", dicas);
-  fetch("https://api.sportsle.games/characters/get-hint")
+  fetch("http://127.0.0.1:5000/characters/get-hint")
     .then((response) => response.json())
     .then((data) => {
       data.forEach((character) => {
         let hintText = document.getElementById("hint_text");
         if (clique === 1) {
           hintText.innerHTML = `Dica 1: ${character.hint1}`;
-          console.log(dicas + "click1")
+          console.log(dicas + "click1");
         } else if (clique === 2) {
           hintText.innerHTML = `Dica 2: ${character.hint2}`;
-          console.log(dicas + "click2")
+          console.log(dicas + "click2");
         } else if (clique === 3) {
           hintText.innerHTML = `Dica 3: ${character.hint3}`;
-          console.log(dicas + "click3")
+          console.log(dicas + "click3");
         } else if (clique === 4) {
           hintText.innerHTML = `Apelido: ${character.nickname}`;
-          console.log(dicas + "click4")
+          console.log(dicas + "click4");
         } else if (clique === 5) {
           clique = 1;
           hintText.innerHTML = `Dica 1: ${character.hint1}`;
-          console.log(dicas + "click5")
+          console.log(dicas + "click5");
         }
       });
     })
@@ -238,7 +349,7 @@ deleteLocalStorageAfterTime();
 loadDivContents();
 
 function submitGuess(guess) {
-  fetch("https://api.sportsle.games/characters/verifyGuess", {
+  fetch("http://localhost:5000/characters/verifyGuess", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -365,7 +476,6 @@ function submitGuess(guess) {
       arrow.style.height = "0";
       arrow.style.borderLeft = "5px solid transparent";
       arrow.style.borderRight = "5px solid transparent";
-
 
       // Condicional para o "age"
       if (data.age == "higher") {

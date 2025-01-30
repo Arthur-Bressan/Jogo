@@ -1,0 +1,121 @@
+{
+    "pt": {
+      "title": "Sportsle",
+      "button_translate": "Traduzir",
+      "how_to_play": "Como Jogar?",
+      "guess_athlete": "Adivinhe o Atleta:",
+      "attempts": "Tentativas:",
+      "instructions": [
+        "Digite o nome de um atleta no campo de entrada e selecione o nome correspondente.",
+        "As características corretas serão indicadas pela cor verde.",
+        "Se tiver alguma dúvida durante o jogo, você poderá passar o mouse sobre cada característica para obter mais informações.",
+        "O jogo acabará quando o atleta do dia for acertado."
+      ],
+      "legenda": {
+        "name": "Nome",
+        "name_info": "O nome é o que você digitou.",
+        "gender": "Gênero",
+        "gender_info": "O gênero ♀️ representa feminino, já o ♂️ representa masculino.",
+        "sport": "Esporte",
+        "sport_info": "O ícone representa o objeto utilizado em cada esporte.",
+        "country": "Nacionalidade",
+        "country_info": "É o país de origem do atleta que foi digitado. Se a borda estiver vermelha, ele é diferente do atleta do dia; se for verde, é a mesma Nacionalidade.",
+        "active": "Atividade",
+        "active_info": "Inativo é o jogador que já se aposentou; ativo é o que ainda está jogando.",
+        "age": "Idade",
+        "age_info": "A seta apontando para cima indica uma idade maior do que a escrita, e a seta para baixo indica uma idade menor."
+      },
+      "tutorial": {
+        "how_to_play": "Como Jogar?",
+        "game_objective": "O objetivo do jogo é adivinhar o atleta com base nas informações mostradas abaixo.",
+        "info": {
+          "name": "Nome",
+          "gender": "Gênero",
+          "sport": "Esporte",
+          "country": "Nacionalidade",
+          "active": "Atividade",
+          "age": "Idade"
+        }
+      }
+    },
+    "es": {
+      "title": "Sportsle",
+      "button_translate": "Traducir",
+      "how_to_play": "¿Cómo Jugar?",
+      "guess_athlete": "Adivina el Atleta:",
+      "attempts": "Intentos:",
+      "instructions": [
+        "Escribe el nombre de un atleta en el campo de entrada y selecciona el nombre correspondiente.",
+        "Las características correctas se indicarán con color verde.",
+        "Si tienes alguna duda durante el juego, puedes pasar el ratón sobre cada característica para obtener más información.",
+        "El juego terminará cuando aciertes al atleta del día."
+      ],
+      "legenda": {
+        "name": "Nombre",
+        "name_info": "El nombre es el que escribiste.",
+        "gender": "Género",
+        "gender_info": "El género ♀️ representa femenino, mientras que ♂️ representa masculino.",
+        "sport": "Deporte",
+        "sport_info": "El ícono representa el objeto utilizado en cada deporte.",
+        "country": "Nacionalidad",
+        "country_info": "Es el país de origen del atleta que escribiste. Si el borde está rojo, es diferente al atleta del día; si es verde, es la misma nacionalidad.",
+        "active": "Actividad",
+        "active_info": "Inactivo es el jugador que ya se ha retirado; activo es el que todavía está jugando.",
+        "age": "Edad",
+        "age_info": "La flecha hacia arriba indica una edad mayor que la escrita, y la flecha hacia abajo indica una edad menor.",
+        "explication": ""
+    },
+      "tutorial": {
+        "how_to_play": "¿Cómo Jugar?",
+        "game_objective": "El objetivo del juego es adivinar al atleta basado en la información mostrada a continuación.",
+        "info": {
+          "name": "Nombre",
+          "gender": "Género",
+          "sport": "Deporte",
+          "country": "Nacionalidad",
+          "active": "Actividad",
+          "age": "Edad"
+        }
+      }
+    },
+    "en": {
+      "title": "Sportsle",
+      "button_translate": "Translate",
+      "how_to_play": "How to Play?",
+      "guess_athlete": "Guess the Athlete:",
+      "attempts": "Attempts:",
+      "instructions": [
+        "Type the name of an athlete in the input field and select the corresponding name.",
+        "The correct characteristics will be indicated with green color.",
+        "If you have any doubts during the game, you can hover over each characteristic for more information.",
+        "The game will end when you guess the athlete of the day."
+      ],
+      "legenda": {
+        "name": "Name",
+        "name_info": "The name is the one you entered.",
+        "gender": "Gender",
+        "gender_info": "The gender ♀️ represents female, while ♂️ represents male.",
+        "sport": "Sport",
+        "sport_info": "The icon represents the object used in each sport.",
+        "country": "Country",
+        "country_info": "It is the country of origin of the athlete you entered. If the border is red, it is different from the athlete of the day; if it is green, it is the same nationality.",
+        "active": "Activity",
+        "active_info": "Inactive is the player who has already retired; active is the one who is still playing.",
+        "age": "Age",
+        "age_info": "The arrow pointing up indicates an age greater than the written one, and the arrow pointing down indicates a lower age."
+      },
+      "tutorial": {
+        "how_to_play": "How to Play?",
+        "game_objective": "The objective of the game is to guess the athlete based on the information displayed below.",
+        "info": {
+          "name": "Name",
+          "gender": "Gender",
+          "sport": "Sport",
+          "country": "Country",
+          "active": "Activity",
+          "age": "Age"
+        }
+      }
+    }
+  }
+  

@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 
 def get_db_connection():
-    conn = sqlite3.connect('./dados.db')
+    conn = sqlite3.connect('backend/dados.db')
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -77,10 +77,11 @@ def get_character(name):
 
 def verify_guess():
     user_guess = request.json.get('guess')
-    response_guess = requests.get(f"https://api.sportsle.games/characters/{user_guess}")
+    response_guess = requests.get(f"http://127.0.0.1:5000/characters/{user_guess}")
     data_guess = response_guess.json()
-    response = requests.get(f"https://api.sportsle.games/characters/{random_character}")
+    response = requests.get(f"http://127.0.0.1:5000/characters/{random_character}")
     data = response.json()
+
     random_character_age = data.get("age")
     random_character_country = data.get("country")
     random_character_id = data.get("id")

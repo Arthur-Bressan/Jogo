@@ -1,0 +1,54 @@
+{
+    "pt": {
+      "title": "Sportsle",
+      "about_us": {
+        "title": "Sobre nós",
+        "subtitle": "Nossa ideia e objetivos",
+        "content": "O Sportsle é um projeto integrador desenvolvido pelos alunos da turma de informática 2022. O Sportsle foi criado com o objetivo de desafiar os usuários a identificar atletas a partir de dicas progressivas. Nossa proposta é simples: queremos que você descubra atletas e suas trajetórias de maneira descontraída, ampliando seu conhecimento esportivo enquanto joga. A ideia nasceu de uma reflexão sobre como muitos atletas, apesar de suas conquistas, acabam sendo pouco reconhecidos pelo público. Queremos mudar isso de uma forma simples e acessível, promovendo o reconhecimento dessas figuras de forma leve e interativa. Inspirado nos jogos no estilo \"dle\", ele combina aprendizado e diversão, ajudando as pessoas a conhecer mais sobre esportistas de diversas modalidades, tanto femininas quanto masculinas. Nosso objetivo é que o Sportsle seja mais do que um jogo: que ele se torne uma ferramenta para ampliar o interesse por esportes e promover o reconhecimento de atletas de forma mais inclusiva."
+      },
+      "snct": {
+        "title": "Semana Nacional de Ciência e Tecnologia 2024",
+        "subtitle": "Objetivo do Projeto",
+        "content": "A Semana Nacional de Ciência e Tecnologia 2024 (SNCT) é um evento anual em nossa escola, onde os alunos têm a oportunidade de apresentar seus projetos e compartilhar suas ideias. Durante o evento, as apresentações são avaliadas com base em critérios específicos, promovendo aprendizado, inovação e troca de conhecimentos. Na SNCT 2024, apresentamos pela primeira vez o protótipo do Sportsle ao público. A atividade permitiu que os visitantes experimentassem o jogo e dessem suas opiniões sobre a proposta. Essa interação foi fundamental para ajustar a dinâmica do jogo e identificar áreas de melhoria. Organizamos sessões interativas onde os participantes jogavam e compartilhavam suas descobertas sobre atletas. Além disso, discutimos como o jogo pode ser uma ferramenta inclusiva e acessível para aprender mais sobre esportes e seus protagonistas. O evento foi um marco importante para divulgar o projeto e entender seu impacto em diferentes públicos. Como reconhecimento do trabalho, o Sportsle conquistou o terceiro lugar na SNCT 2024, um resultado que nos motiva a continuar aprimorando a ideia e levando o jogo a mais pessoas."
+      },
+      "game": {
+        "title": "Jogo",
+        "button_text": "Acesse o jogo"
+      }
+    },
+    "es": {
+      "title": "Sportsle",
+      "about_us": {
+        "title": "Sobre nosotros",
+        "subtitle": "Nuestra idea y objetivos",
+        "content": "Sportsle es un proyecto integrador desarrollado por los estudiantes de la clase de informática 2022. Sportsle fue creado con el objetivo de desafiar a los usuarios a identificar atletas a partir de pistas progresivas. Nuestra propuesta es simple: queremos que descubras atletas y sus trayectorias de manera relajada, ampliando tu conocimiento deportivo mientras juegas. La idea nació de una reflexión sobre cómo muchos atletas, a pesar de sus logros, terminan siendo poco reconocidos por el público. Queremos cambiar esto de una manera simple y accesible, promoviendo el reconocimiento de estas figuras de manera ligera e interactiva. Inspirado en juegos del estilo \"dle\", combina aprendizaje y diversión, ayudando a las personas a conocer más sobre deportistas de diversas modalidades, tanto femeninas como masculinas. Nuestro objetivo es que Sportsle sea más que un juego: que se convierta en una herramienta para ampliar el interés por los deportes y promover el reconocimiento de los atletas de manera más inclusiva."
+      },
+      "snct": {
+        "title": "Semana Nacional de Ciencia y Tecnología 2024",
+        "subtitle": "Objetivo del Proyecto",
+        "content": "La Semana Nacional de Ciencia y Tecnología 2024 (SNCT) es un evento anual en nuestra escuela donde los estudiantes tienen la oportunidad de presentar sus proyectos y compartir sus ideas. Durante el evento, las presentaciones se evalúan en función de criterios específicos, promoviendo el aprendizaje, la innovación y el intercambio de conocimientos. En la SNCT 2024, presentamos por primera vez el prototipo de Sportsle al público. La actividad permitió que los visitantes probaran el juego y dieran sus opiniones sobre la propuesta. Esta interacción fue fundamental para ajustar la dinámica del juego e identificar áreas de mejora. Organizamos sesiones interactivas donde los participantes jugaban y compartían sus descubrimientos sobre atletas. Además, discutimos cómo el juego puede ser una herramienta inclusiva y accesible para aprender más sobre los deportes y sus protagonistas. El evento fue un hito importante para dar a conocer el proyecto y comprender su impacto en diferentes públicos. Como reconocimiento del trabajo, Sportsle obtuvo el tercer lugar en la SNCT 2024, un resultado que nos motiva a seguir mejorando la idea y llevar el juego a más personas."
+      },
+      "game": {
+        "title": "Juego",
+        "button_text": "Accede al juego"
+      }
+    },
+    "en": {
+      "title": "Sportsle",
+      "about_us": {
+        "title": "About Us",
+        "subtitle": "Our Idea and Goals",
+        "content": "Sportsle is an integrative project developed by students of the 2022 computer science class. Sportsle was created with the goal of challenging users to identify athletes through progressive hints. Our proposal is simple: we want you to discover athletes and their journeys in a relaxed way, expanding your sports knowledge while playing. The idea was born from a reflection on how many athletes, despite their achievements, end up being little recognized by the public. We want to change this in a simple and accessible way, promoting the recognition of these figures in a light and interactive manner. Inspired by \"dle\"-style games, it combines learning and fun, helping people learn more about athletes from various sports, both female and male. Our goal is for Sportsle to be more than just a game: we want it to become a tool to expand interest in sports and promote athlete recognition in a more inclusive way."
+      },
+      "snct": {
+        "title": "National Science and Technology Week 2024",
+        "subtitle": "Project Objective",
+        "content": "The National Science and Technology Week 2024 (SNCT) is an annual event at our school where students have the opportunity to present their projects and share their ideas. During the event, presentations are evaluated based on specific criteria, promoting learning, innovation, and knowledge exchange. At SNCT 2024, we presented the prototype of Sportsle to the public for the first time. The activity allowed visitors to try the game and give their opinions on the proposal. This interaction was crucial for adjusting the game dynamics and identifying areas for improvement. We organized interactive sessions where participants played and shared their discoveries about athletes. Additionally, we discussed how the game can be an inclusive and accessible tool for learning more about sports and their protagonists. The event was an important milestone for publicizing the project and understanding its impact on different audiences. As recognition of the work, Sportsle won third place at SNCT 2024, a result that motivates us to continue improving the idea and bringing the game to more people."
+      },
+      "game": {
+        "title": "Game",
+        "button_text": "Access the game"
+      }
+    }
+  }
+  
